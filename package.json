@@ -1,0 +1,25 @@
+{
+  "name": "jqnano",
+  "version": "1.0.0",
+  "description": "Nano library to manipulate the DOM",
+  "main": "nano.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kiltjs/jqnano.git"
+  },
+  "keywords": [
+    "jqnano",
+    "jqlite",
+    "nano",
+    "dom"
+  ],
+  "author": "Jesús Germade <jesus@germade.es>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kiltjs/jqnano/issues"
+  },
+  "homepage": "https://github.com/kiltjs/jqnano#readme"
+}
