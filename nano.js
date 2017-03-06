@@ -178,7 +178,10 @@
 
   // ponyfills
 
-  _.matchMedia = root.matchMedia || root.webkitMatchMedia || root.mozMatchMedia || root.msMatchMedia;
+  var matchmedia = root.matchMedia || root.webkitMatchMedia || root.mozMatchMedia || root.msMatchMedia;
+  _.matchMedia = function (query) {
+    return matchmedia(query);
+  };
 
   _.matchesSelector = Element.prototype.matchesSelector ? function (el, selector) {
     return el.matchesSelector(selector);
@@ -189,7 +192,9 @@
   })( _.first([
     'matchesSelector',
     'webkitMatchesSelector',
-    'mozMatchesSelector'
+    'mozMatchesSelector',
+    'msMatchesSelector',
+    'oMatchesSelector',
   ], function (matchesSelector) {
     return matchesSelector in Element.prototype;
   }) );
