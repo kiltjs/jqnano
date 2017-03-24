@@ -104,7 +104,7 @@
           if( toggle ) el.classList.add(className);
           else el.classList.remove(className);
         };
-      }) : function (el, className) {
+      })() : function (el, className) {
         el.className = el.className.replace(new RegExp('\\s*' + className + '\\s*','g'), ' ');
       };
 
