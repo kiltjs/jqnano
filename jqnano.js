@@ -226,9 +226,9 @@
     }
 
     if( typeof children === 'string' ) el.innerHTML = children;
-    else if( children ) children.forEach(function (el) {
+    else if( children ) children.length ? _.each(children, function (el) {
       el.appendChild(el);
-    });
+    }) : el.appendChild(children);;
 
     return el;
   };
