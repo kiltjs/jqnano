@@ -218,13 +218,18 @@
     return el;
   };
 
-  _.create = function (tagName, attrs, html) {
+  _.create = function (tagName, attrs, children) {
     var el = document.createElement(tagName);
 
-    if( html ) el.innerHTML = html;
     if( attrs ) {
       for( var attr in attrs ) el[attr] = attrs[attr];
     }
+
+    if( typeof children === 'string' ) el.innerHTML = children;
+    else if( children ) children.forEach(function (el) {
+      el.appendChild(el);
+    });
+
     return el;
   };
 

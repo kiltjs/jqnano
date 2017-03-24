@@ -1,8 +1,8 @@
 {
   "name": "jqnano",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Nano library to manipulate the DOM",
-  "main": "nano.js",
+  "main": "jqnano.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
