@@ -226,8 +226,8 @@
     }
 
     if( typeof children === 'string' ) el.innerHTML = children;
-    else if( children ) children.length ? _.each(children, function (el) {
-      el.appendChild(el);
+    else if( children ) children.length ? _.each(children, function (child) {
+      el.appendChild(child);
     }) : el.appendChild(children);;
 
     return el;
