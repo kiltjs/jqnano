@@ -1,0 +1,23 @@
+{
+  "name": "jqnano",
+  "description": "Nano library to manipulate the DOM",
+  "main": "jqnano.js",
+  "authors": [
+    "Jesús Germade <jesus@germade.es>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "jqnano",
+    "jqlite",
+    "nano",
+    "dom"
+  ],
+  "homepage": "https://github.com/kiltjs/jqnano",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

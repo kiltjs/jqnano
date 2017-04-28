@@ -3,7 +3,9 @@
 
 Nano library to manipulate the DOM
 
-[![](https://img.shields.io/npm/v/jqnano.svg)](https://www.npmjs.com/package/jqnano) [![](https://img.shields.io/bower/v/jqnano.svg)](http://bower.io/search/?q=jqnano)
+[![npm](https://img.shields.io/npm/v/jqnano.svg)](https://www.npmjs.com/package/jqnano)
+[![Build Status](https://travis-ci.org/kiltjs/jqnano.svg?branch=master)](https://travis-ci.org/kiltjs/jqnano)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ``` sh
 npm install jqnano --save
