@@ -228,7 +228,7 @@
     if( typeof children === 'string' ) el.innerHTML = children;
     else if( children ) children.length ? _.each(children, function (child) {
       el.appendChild(child);
-    }) : el.appendChild(children);;
+    }) : el.appendChild(children);
 
     return el;
   };
@@ -298,16 +298,8 @@
     scrollRoot = getScrollRoot();
   });
 
-  if( typeof exports === 'object' && typeof module !== 'undefined' ) {
-    // CommonJS
-    module.exports = _;
-  } else if( typeof define === 'function' && define.amd ) {
-    // AMD. Register as an anonymous module.
-    define([], function () { return _; });
-  } else {
-    // Browser globals
-    root._ = _;
-    root.$$ = root.$$ || $$;
-  }
+  if( typeof exports === 'object' && typeof module !== 'undefined' ) module.exports = _;
+  else if( typeof define === 'function' && define.amd ) define([], function () { return _; });
+  else { root._ = _; root.$$ = root.$$ || $$; }
 
 })(this);

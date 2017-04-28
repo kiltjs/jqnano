@@ -1,9 +1,9 @@
 
 # jqNano
 
-[![](https://img.shields.io/npm/v/jqnano.svg)](https://www.npmjs.com/package/jqnano) [![](https://img.shields.io/bower/v/jqnano.svg)](http://bower.io/search/?q=jqnano)
-
 Nano library to manipulate the DOM
+
+[![](https://img.shields.io/npm/v/jqnano.svg)](https://www.npmjs.com/package/jqnano) [![](https://img.shields.io/bower/v/jqnano.svg)](http://bower.io/search/?q=jqnano)
 
 ``` sh
 npm install jqnano --save
