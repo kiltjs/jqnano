@@ -1,7 +1,5 @@
 
-git_branch := $(shell git rev-parse --abbrev-ref HEAD)
-
-.PHONY: test publish
+.PHONY: test release
 
 install:
 	npm install
@@ -16,6 +14,6 @@ test: install eslint karma
 
 publish.release:
 	echo "running https://gist.githubusercontent.com/jgermade/d394e47341cf761286595ff4c865e2cd/raw/"
-	@sh -c "$(wget https://gist.githubusercontent.com/jgermade/d394e47341cf761286595ff4c865e2cd/raw/ -O -)"
+	sh -c "$(wget https://gist.githubusercontent.com/jgermade/d394e47341cf761286595ff4c865e2cd/raw/ -O -)"
 
 release: test publish.release
