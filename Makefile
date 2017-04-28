@@ -14,6 +14,6 @@ test: install eslint karma
 
 publish.release:
 	@echo "\nrunning https://gist.githubusercontent.com/jgermade/d394e47341cf761286595ff4c865e2cd/raw/\n"
-	sh -c "$(shell wget https://gist.githubusercontent.com/jgermade/d394e47341cf761286595ff4c865e2cd/raw/ -O -)"
+	shell sh -c "$(wget https://gist.githubusercontent.com/jgermade/d394e47341cf761286595ff4c865e2cd/raw/ -O -)"
 
 release: test publish.release
