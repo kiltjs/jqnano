@@ -222,7 +222,10 @@
     var el = document.createElement(tagName);
 
     if( attrs ) {
-      for( var attr in attrs ) el[attr] = attrs[attr];
+      if( attrs.length ) children = attrs;
+      else {
+        for( var attr in attrs ) el[attr] = attrs[attr];
+      }
     }
 
     if( typeof children === 'string' ) el.innerHTML = children;
@@ -234,17 +237,22 @@
   };
 
   _.append = function (el, node) {
+    if( node === undefined ) return function (node) { node.appendChild(el); };
     el.appendChild(node);
+    return _;
   };
 
   _.prepend = function (el, node) {
+    if( node === undefined ) return function (node) { _.prepend(node, el); };
     if( !el.children.length ) el.appendChild(node);
     else el.insertBefore(node, el.firstElementChild || el.firstChild);
+    return _;
   };
 
   _.remove = function (el) {
     var parent = el.parentElement || el.parentNode;
     if( parent ) parent.removeChild(el);
+    return _;
   };
 
   _.formParams = function (form) {
