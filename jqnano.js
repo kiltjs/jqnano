@@ -82,9 +82,7 @@
       classListAdd = classListEnabled ? function (el, className) {
         el.classList.add(className);
       } : function (el, className) {
-        if( !classListHas(el, className) ) {
-          el.className += ' ' + className;
-        }
+        if( !classListHas(el, className) ) el.className += ' ' + className;
       },
       classListRemove = classListEnabled ? function (el, className) {
         el.classList.remove(className);
@@ -109,6 +107,7 @@
       };
 
   _.classList = { has: classListHas, add: classListAdd, rm: classListRemove, toggle: classListToggle };
+
   _.hasClass = classListHas;
   _.addClass = classListAdd;
   _.removeClass = classListRemove;
@@ -199,10 +198,16 @@
     return matchesSelector in Element.prototype;
   }) );
 
-  _.currentScript = document.currentScript || (function() {
+  function _getCurrentScript () {
     var scripts = document.getElementsByTagName('script');
     return scripts[scripts.length - 1];
-  })();
+  }
+
+  Object.defineProperty(_, 'currentScript', {
+    get: function () {
+      return document.currentScript || _getCurrentScript();
+    },
+  });
 
   // dom nodes
 
@@ -218,8 +223,30 @@
     return el;
   };
 
-  _.create = function (tagName, attrs, children) {
-    var el = document.createElement(tagName);
+  function _createComplexEl (tag_name, attrs, children) {
+    var classNames = [], id = null;
+
+    tag_name = tag_name.replace(/\.([^#.]+)/g, function (_matched, _className) {
+      classNames.push(_className);
+      return '';
+    }).replace(/\#([^#.]+)/g, function (_matched, _id) {
+      id = _id;
+      return '';
+    });
+
+    attrs = attrs || {};
+    if( id ) attrs.id = id;
+    if( classNames.length ) {
+      attrs.className = (attrs.className ? attrs.className + ' ' : '') + classNames.join(' ');
+    }
+
+    return _.create(tag_name, attrs, children);
+  }
+
+  _.create = function (tag_name, attrs, children) {
+    if( /[#.]/.test(tag_name) ) return _createComplexEl(tag_name, attrs, children);
+
+    var el = document.createElement(tag_name);
 
     if( attrs ) {
       if( attrs.length ) children = attrs;
@@ -237,13 +264,13 @@
   };
 
   _.append = function (el, node) {
-    if( node === undefined ) return function (node) { node.appendChild(el); };
+    if( node === undefined ) return function (_el) { _el.appendChild(el); };
     el.appendChild(node);
     return _;
   };
 
   _.prepend = function (el, node) {
-    if( node === undefined ) return function (node) { _.prepend(node, el); };
+    if( node === undefined ) return function (_el) { _.prepend(_el, el); };
     if( !el.children.length ) el.appendChild(node);
     else el.insertBefore(node, el.firstElementChild || el.firstChild);
     return _;
@@ -282,8 +309,15 @@
     var cacheTop = ((typeof window.pageYOffset !== 'undefined') ? window.pageYOffset : null) || body.scrollTop || html.scrollTop, // cache the window's current scroll position
         root;
 
+    document.body.style.height = '200vh';
+    document.documentElement.style.height = '200vh';
+
     html.scrollTop = body.scrollTop = cacheTop + (cacheTop > 0) ? -1 : 1;
-    // find root by checking which scrollTop has a value larger than the cache.
+
+    document.body.style.height = null;
+    document.documentElement.style.height = null;
+
+    // find root by checking which scrollTop has a value different than the cache.
     root = (html.scrollTop !== cacheTop) ? html : body;
 
     root.scrollTop = cacheTop; // restore the window's scroll position to cached value

@@ -1,4 +1,4 @@
-/* global describe, it, assert, $live */
+/* global describe, it, assert, _ */
 describe('create node', function () {
 
   var ul = _.create('ul'),
