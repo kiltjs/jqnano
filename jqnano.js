@@ -341,7 +341,7 @@
   });
 
   if( typeof exports === 'object' && typeof module !== 'undefined' ) module.exports = _;
-  else if( typeof root.define === 'function' && define.amd ) define([], function () { return _; });
+  else if( typeof root.define === 'function' && root.define.amd ) define([], function () { return _; });
   else { root._ = _; root.$$ = root.$$ || $$; }
 
 })(this);
