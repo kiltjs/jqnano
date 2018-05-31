@@ -1,6 +1,6 @@
 {
   "name": "jqnano",
-  "version": "1.0.23",
+  "version": "1.0.24",
   "description": "Nano library to manipulate the DOM",
   "main": "jqnano.js",
   "scripts": {
