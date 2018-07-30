@@ -229,7 +229,7 @@
     tag_name = tag_name.replace(/\.([^#.]+)/g, function (_matched, _className) {
       classNames.push(_className);
       return '';
-    }).replace(/\#([^#.]+)/g, function (_matched, _id) {
+    }).replace(/#([^#.]+)/g, function (_matched, _id) {
       id = _id;
       return '';
     });
@@ -261,6 +261,12 @@
     }) : el.appendChild(children);
 
     return el;
+  };
+
+  _.attr = function (el, key, value) {
+    if( value === undefined ) return el.getAttribute(key);
+    if( value === null ) el.removeAttribute(key);
+    else el.setAttribute(key, value);
   };
 
   _.append = function (el, node) {
