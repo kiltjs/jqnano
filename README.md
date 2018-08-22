@@ -1,18 +1,15 @@
 
-# jqNano
+# @kilt/jqnano
 
 Nano library to manipulate the DOM
 
 [![ᴋɪʟᴛ ᴊs](https://jesus.germade.es/assets/images/badge-kiltjs.svg)](https://github.com/kiltjs)
-[![npm](https://img.shields.io/npm/v/jqnano.svg)](https://www.npmjs.com/package/jqnano)
+[![npm](https://img.shields.io/npm/v/@kilt/jqnano.svg)](https://www.npmjs.com/package/@kilt/jqnano)
 [![Build Status](https://travis-ci.org/kiltjs/jqnano.svg?branch=master)](https://travis-ci.org/kiltjs/jqnano)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ``` sh
-npm install jqnano --save
-
-# or via bower
-bower install jqnano --save
+npm install @kilt/jqnano --save
 ```
 
 ### Object
