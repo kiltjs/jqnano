@@ -22,7 +22,6 @@ npm.publish:
 	- node -e "var fs = require('fs'); var pkg = require('./package.json'); pkg.name = 'jqnano'; fs.writeFile('./package.json', JSON.stringify(pkg, null, '  '), 'utf8', function (err) { if( err ) console.log('Error: ' + err); });"
 	- npm publish
 	- git checkout package.json
-	@echo "\nhttps://github.com/kiltjs/jqnano/releases/tag/$(node -e "console.log('v'+require('./package.json').version);")\n"
 
 github.release: export REPOSITORY="kiltjs/jqnano"
 github.release: export PKG_VERSION=$(shell node -e "console.log('v'+require('./package.json').version);")
@@ -31,5 +30,6 @@ github.release: export RELEASE_URL=$(shell curl -s -X POST -H "Content-Type: app
 	-w '%{url_effective}' "https://api.github.com/repos/${REPOSITORY}/releases" )
 github.release:
 	@echo ${RELEASE_URL}
+	@echo "\nhttps://github.com/kiltjs/jqnano/releases/tag/${PKG_VERSION})\n"
 
 release: test npm.publish github.release
