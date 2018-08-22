@@ -30,6 +30,6 @@ github.release: export RELEASE_URL=$(shell curl -s -X POST -H "Content-Type: app
 	-w '%{url_effective}' "https://api.github.com/repos/${REPOSITORY}/releases" )
 github.release:
 	@echo ${RELEASE_URL}
-	@echo "\nhttps://github.com/kiltjs/jqnano/releases/tag/${PKG_VERSION})\n"
+	@echo "\nhttps://github.com/kiltjs/jqnano/releases/tag/${PKG_VERSION}\n"
 
 release: test npm.publish github.release
