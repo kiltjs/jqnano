@@ -32,4 +32,4 @@ github.release: export RELEASE_URL=$(shell curl -s -X POST -H "Content-Type: app
 github.release:
 	@echo ${RELEASE_URL}
 
-release: test npm.version github.release
+release: test npm.publish github.release
