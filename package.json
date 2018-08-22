@@ -1,5 +1,5 @@
 {
-  "name": "jqnano",
+  "name": "@kilt/jqnano",
   "version": "1.0.31",
   "description": "Nano library to manipulate the DOM",
   "main": "jqnano.js",
