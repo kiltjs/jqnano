@@ -14,7 +14,7 @@ module.exports = function(config) {
     ],
     files: [
       'jqnano.js',
-      'tests/{,**/}*.js'
+      'tests/{,**/}*-karma.js'
     ],
     browsers: [ 'Chrome', 'Firefox' ],
     customLaunchers: {

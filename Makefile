@@ -12,7 +12,10 @@ eslint:
 karma:
 	@$(shell npm bin)/karma start karma.conf.js
 
-test: install eslint karma
+mocha:
+	$(shell npm bin)/mocha --require @babel/register tests/*-tests.js
+
+test: install eslint mocha karma
 
 npm.publish:
 	git pull --tags
