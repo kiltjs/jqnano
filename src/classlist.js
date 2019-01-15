@@ -34,7 +34,7 @@ export default function classListEnv (document) {
   }
 
   function _toggleClassListFull (el, className, toggle) {
-    el.classList.toggle(className, toggle)
+    return el.classList.toggle(className, toggle)
   }
 
   function _toggleClassListPonyfill (el, className, toggle) {
@@ -62,6 +62,8 @@ export default function classListEnv (document) {
 
     if( toggle ) _addClassRegExp(el, className)
     else _removeClassRegExp(el, className)
+
+    return toggle
   }
 
   var class_methods = Object.create({
@@ -84,6 +86,11 @@ export default function classListEnv (document) {
   class_methods.add = _classlist_enabled ? _addClassList : _addClassRegExp
   class_methods.remove = _classlist_enabled ? _removeClassList : _removeClassRegExp
   class_methods.toggle = _classlist_enabled ? _toggleClassList : _toggleClassRegExp
+
+  class_methods.replace = function (old_class, new_class) {
+    class_methods.remove(old_class)
+    class_methods.add(new_class)
+  }
 
   return class_methods
 }
